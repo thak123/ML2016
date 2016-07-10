@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+		{% from "_formhelpers.html" import render_field %}
+		
+		<form id="predict-form" class="form-signin"  method=post action="/results">
+			<dl>
+				
+				{{ render_field(form.clump_thickness)}}
+				{{ render_field(form.unif_cell_size)}}
+				{{ render_field(form.unif_cell_shape )}}
+				{{ render_field(form.marg_adhesion )}}
+				{{ render_field(form.single_epith_cell_size )}}
+				{{ render_field(form.bare_nuclei )}}
+				{{ render_field(form.bland_chrom )}}
+				{{ render_field(form.norm_nucleoli )}}
+				{{ render_field(form.mitoses )}}
+				
+			</dl>
+			<div>
+				<input type="submit" class="btn btn-primary" value='Submit' name='submit_btn'/>
+<button type=button onclick="document.getElementById('predict-form').reset()" value="Reset">Reset</button>
+				</div>
+			
+			<dl>
+				Prediction = {{ z	}}
+			</dl>
+			
+		</form>
+		</div>
+	</body>
+</html>
